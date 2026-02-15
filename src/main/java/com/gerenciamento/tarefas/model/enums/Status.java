@@ -1,7 +1,9 @@
 package com.gerenciamento.tarefas.model.enums;
 
 public enum Status {
-    ACTIVE, 
-    COMPLETED, 
-    ARCHIVED
+
+    PENDENTE,
+    EM_PROGRESSO, 
+    CONCLUIDA
+
 }
