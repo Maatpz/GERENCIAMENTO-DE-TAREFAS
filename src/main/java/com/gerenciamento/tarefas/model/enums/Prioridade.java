@@ -1,6 +1,6 @@
 package com.gerenciamento.tarefas.model.enums;
 
-public enum Priority {
+public enum Prioridade {
     
     BAIXA,
     MEDIA, 
