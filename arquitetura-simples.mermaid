@@ -1,0 +1,50 @@
+graph TB
+    subgraph "SISTEMA DE TAREFAS - Versão Simplificada"
+        subgraph "CAMADA DE CONTROLE"
+            API[Controllers REST<br/>Recebe requisições HTTP]
+            VALID[Validações<br/>@Valid nos DTOs]
+        end
+        
+        subgraph "SEGURANÇA"
+            JWT[Autenticação JWT<br/>Login e Token]
+            FILTER[Filtro Security<br/>Valida token]
+        end
+        
+        subgraph "CAMADA DE NEGÓCIO"
+            US[UsuarioService<br/>Gerenciar usuários]
+            TS[TarefaService<br/>Gerenciar tarefas]
+        end
+        
+        subgraph "CAMADA DE DADOS"
+            REPO[Repositories<br/>Spring Data JPA]
+            ENT[Entidades<br/>Usuario e Tarefa]
+        end
+        
+        subgraph "BANCO DE DADOS"
+            DB[(MySQL ou PostgreSQL)]
+        end
+        
+        subgraph "TESTES - OPCIONAL"
+            UNIT[Testes Básicos<br/>JUnit]
+        end
+    end
+    
+    API --> VALID
+    API --> JWT
+    JWT --> FILTER
+    VALID --> US
+    VALID --> TS
+    
+    US --> REPO
+    TS --> REPO
+    
+    REPO --> ENT
+    ENT --> DB
+    
+    UNIT -.Testa.-> US
+    UNIT -.Testa.-> TS
+    
+    style API fill:#4A90E2,stroke:#2E5C8A,color:#fff
+    style JWT fill:#E74C3C,stroke:#C0392B,color:#fff
+    style DB fill:#27AE60,stroke:#1E8449,color:#fff
+    style UNIT fill:#F39C12,stroke:#D68910,color:#fff
