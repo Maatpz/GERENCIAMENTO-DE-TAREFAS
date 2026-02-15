@@ -7,7 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.gerenciamento.tarefas.model.enums.Priority;
+import com.gerenciamento.tarefas.model.enums.Prioridade;
 import com.gerenciamento.tarefas.model.enums.Status;
 
 import jakarta.persistence.Column;
@@ -42,7 +42,7 @@ public class Tarefa {
     private String description;
     
     @Enumerated(EnumType.STRING)
-    private Priority prioridade;
+    private Prioridade prioridade;
 
     @Enumerated(EnumType.STRING)
     private Status status;
