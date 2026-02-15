@@ -1,11 +1,10 @@
 package com.gerenciamento.tarefas.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import com.gerenciamento.tarefas.model.enums.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,22 +32,19 @@ public class Usuario {
 
     private String name;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, unique = true)
     private String password;
     
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    
     private Boolean active;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Tarefa> tarefas;
 
     @Column(name = "criado_em")
     @CreationTimestamp
     private LocalDateTime criadoEm;
-    
-    @Column(name = "atualizado_em")
-    @UpdateTimestamp
-    private LocalDateTime atualizadoEm;
     
 }
