@@ -1,0 +1,24 @@
+erDiagram
+    USUARIO ||--o{ TAREFA : possui
+    
+    USUARIO {
+        Long id PK
+        String nome
+        String email UK
+        String senha
+        Boolean Ativo
+        List tarefas
+        LocalDateTime criadoEm
+    }
+    
+    TAREFA {
+        Long id PK
+        String titulo
+        String descricao
+        String status
+        String prioridade
+        LocalDate dataVencimento
+        Long usuarioId FK
+        LocalDateTime criadoEm
+        LocalDateTime atualizadoEm
+    }
