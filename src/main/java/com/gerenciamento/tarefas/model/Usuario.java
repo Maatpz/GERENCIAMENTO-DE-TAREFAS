@@ -20,12 +20,14 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tb_usuarios")
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -35,14 +37,14 @@ public class Usuario {
 
     @Column(nullable = false, unique = true)
     private String password;
-    
+
     private Boolean active;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "atribuido")
     private List<Tarefa> tarefas;
 
     @Column(name = "criado_em")
     @CreationTimestamp
     private LocalDateTime criadoEm;
-    
+
 }
