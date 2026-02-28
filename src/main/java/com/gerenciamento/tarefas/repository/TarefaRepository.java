@@ -9,12 +9,12 @@ import com.gerenciamento.tarefas.model.enums.Prioridade;
 import com.gerenciamento.tarefas.model.enums.Status;
 
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
-    
-    List<Tarefa> findByUsuarioId(Long usuarioId);
-    
-    List<Tarefa> findByUsuarioIdAndStatus(Long usuarioId, Status status);
-    
-    List<Tarefa> findByUsuarioIdAndPrioridade(Long usuarioId, Prioridade prioridade);
-    
-    List<Tarefa> findByUsuarioIdAndTituloContaining(Long usuarioId, String titulo);
+
+    List<Tarefa> findByAtribuidoId(Long usuarioId);
+
+    List<Tarefa> findByAtribuidoIdAndStatus(Long usuarioId, Status status);
+
+    List<Tarefa> findByAtribuidoIdAndPrioridade(Long usuarioId, Prioridade prioridade);
+
+    List<Tarefa> findByAtribuidoIdAndTitleContaining(Long usuarioId, String title);
 }
